@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Models\Service;
+use App\Models\Pesanan;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
@@ -17,7 +18,9 @@ class AdminController extends Controller
 
         $totalCustomers = Customer::count();
         $totalServices  = Service::count();
-        return view('admin.dashboard', compact('customers', 'services', 'totalCustomers', 'totalServices'));
+
+        $pesanans = Pesanan::all();
+        return view('admin.dashboard', compact('customers', 'services', 'totalCustomers', 'totalServices','pesanans'));
     }
 
     // Method untuk menampilkan halaman Akun Pelanggan
